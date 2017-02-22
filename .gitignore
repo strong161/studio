@@ -45,3 +45,13 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+#忽略工程目录下STM32L476JG-SensorTile下的Exe,list，obj文件夹下文件
+.hex
+.out
+.map
+.o
+.pbi
+.xcl
+.linf
+.browse
