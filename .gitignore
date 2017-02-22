@@ -55,3 +55,10 @@ Temporary Items
 .xcl
 .linf
 .browse
+#过滤文件夹Debug,Release,obj
+Debug/
+Release/
+obj/
+Exe/
+List/
+Obj/

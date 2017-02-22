@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\common\bin\cspybat" -f "C:\Users\Admin\Desktop\SensorTiler\Projects\SensorTile\Applications\AudioLoop\EWARM\settings\Project.STM32L476JG-SensorTile.general.xcl" --backend -f "C:\Users\Admin\Desktop\SensorTiler\Projects\SensorTile\Applications\AudioLoop\EWARM\settings\Project.STM32L476JG-SensorTile.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\common\bin\cspybat" -f "C:\Users\Admin\Documents\GitHub\studio\SensorTiler\Projects\SensorTile\Applications\AudioLoop\EWARM\settings\Project.STM32L476JG-SensorTile.general.xcl" --backend -f "C:\Users\Admin\Documents\GitHub\studio\SensorTiler\Projects\SensorTile\Applications\AudioLoop\EWARM\settings\Project.STM32L476JG-SensorTile.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\common\bin\cspybat" -f "C:\Users\Admin\Desktop\SensorTiler\Projects\SensorTile\Applications\AudioLoop\EWARM\settings\Project.STM32L476JG-SensorTile.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\Admin\Desktop\SensorTiler\Projects\SensorTile\Applications\AudioLoop\EWARM\settings\Project.STM32L476JG-SensorTile.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.5\common\bin\cspybat" -f "C:\Users\Admin\Documents\GitHub\studio\SensorTiler\Projects\SensorTile\Applications\AudioLoop\EWARM\settings\Project.STM32L476JG-SensorTile.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\Admin\Documents\GitHub\studio\SensorTiler\Projects\SensorTile\Applications\AudioLoop\EWARM\settings\Project.STM32L476JG-SensorTile.driver.xcl" 
 
 @echo off 
 :end
