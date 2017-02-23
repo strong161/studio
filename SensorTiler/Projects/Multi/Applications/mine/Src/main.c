@@ -5,164 +5,7 @@
   * @version V2.2.0
   * @date    23-December-2016
   * @brief   Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * <h2><center>&copy; COPYRIGHT(c) 2016 STMicroelectronics</center></h2>
-  *
-  * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
-  * You may not use this file except in compliance with the License.
-  * You may obtain a copy of the License at:
-  *
-  *        http://www.st.com/software_license_agreement_liberty_v2
-  *
-  * Redistribution and use in source and binary forms, with or without modification,
-  * are permitted provided that the following conditions are met:
-  *   1. Redistributions of source code must retain the above copyright notice,
-  *      this list of conditions and the following disclaimer.
-  *   2. Redistributions in binary form must reproduce the above copyright notice,
-  *      this list of conditions and the following disclaimer in the documentation
-  *      and/or other materials provided with the distribution.
-  *   3. Neither the name of STMicroelectronics nor the names of its contributors
-  *      may be used to endorse or promote products derived from this software
-  *      without specific prior written permission.
-  *
-  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-  * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-  * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-  *
-  ******************************************************************************
-  */
-
-/**
- * @mainpage BLUEMICROSYSTEM2 Bluetooth Low Energy and Sensors Software
- *
- * @image html st_logo.png
- *
- * <b>Introduction</b>
- *
- * This firmware package includes Components Device Drivers, Board Support Package
- * and example application for the following STMicroelectronics elements:
- * - X-NUCLEO-IDB04A1/X-NUCLEO-IDB05A1 Bluetooth Low energy expansion boards
- * - X-NUCLEO-IKS01A1 Expansion board for four MEMS sensor devices:
- *       HTS221, LPS25H, LSM6DS0, LSM6DS3, LIS3MDL
- * - X-NUCLEO-IKS01A2 Expansion board for four MEMS sensor devices:
- *       HTS221, LPS22HB, LSM6DSL, LSM303AGR
- * - X-NUCLEO-CCA02M1 Digital MEMS microphones expansion board
- * - NUCLEO-F401RE NUCLEO-L476RG Nucleo boards
- * - STEVAL-STLKT01V1 (SensorTile) evaluation board that contains the following components:
- *     - MEMS sensor devices: HTS221, LPS22HB, LSM303, LSM6DSM
- *     - digital microphone: MP34DT04
- *     - Gas Gauge IC with alarm output: STC3115
- * - The osxMotionFX (iNEMOEngine PRO) suite uses advanced algorithms to integrate outputs
- * from multiple MEMS sensors in a smartway, independent of environmental conditions,
- * to reach optimal performance. Real-time motion-sensor data fusion is set to significantly
- * improve the user experience, increasing accuracy, resolution, stability and response time.
- * - osxMotionAR (iNEMOEngine PRO) software provides real-time activity recognition data 
- * using MEMS accelerometer sensor
- * - osxMotionCP (iNEMOEngine PRO) software provides carry Position recognition data 
- * using MEMS accelerometer sensor
- * - osxMotionGR (iNEMOEngine PRO) software provides carry Gesture recognition data 
- * using MEMS accelerometer sensor
- * - osxAcousticSL software (for only F4 STM32 Nucleo motherboard) provides real-time
- * audio source localization using PCM signal audio
- * - osxBlueVoice software enables real-time voice communication over Bluetooth Low Energy. It includes one
- * characteristic for audio transmission and one for synchronization and it is responsible for audio
- * encoding and periodical data transmission on Server side and for decoding of received voice data on Client side.
- * - USB device library (for only STEVAL-STLCS01V1) provides support of multi packet transfer to allow
- * sending big amount of data without split them into max packet size transfers.
- *
- * @attention
- * <b>Important Hardware Additional Information</b><br>
- * <br>\image html X-NUCLEO-IKS01A1_HW_Info.jpg "Figure 1: X-NUCLEO-IKS01A1 expansion board"
- * <br>Before to connect X-NUCLEO-IKS01A1 with X-NUCLEO-CCA02M1 expansion board through the Arduino UNO R3 extension connector,
- * remove the 0-ohm resistors SB25, SB26 and SB27 onto X-NUCLEO-IKS01A1 board, as the above figure 1 shows.<br>
- * <br>\image html X-NUCLEO-IKS01A2_HW_Info.jpg "Figure 2: X-NUCLEO-IKS01A2 expansion board"
- * <br>Before to connect X-NUCLEO-IKS01A2 with X-NUCLEO-CCA02M1 expansion board through the Arduino UNO R3 extension connector,
- * on to X-NUCLEO-IKS01A2 board remove these 0-ohm resistor:
- * - For F4 STM32 Nucleo motherboard remove SB25, SB26 and SB27
- * - For L4 STM32 Nucleo motherboard remove SB25 if additional microphones are plugged on to X-NUCLEO-CCA02M1 board.<br>
- * .
- * <br>\image html X-NUCLEO-CCA02M1_HW_Info.jpg "Figure 3: X-NUCLEO-CCA02M1 expansion board"
- * <br>For only L4 STM32 Nucleo motherboard, before to connect the board X-NUCLEO-CCA02M1 with the STM32 L4 Nucleo motherboard through the Morpho connector layout,
- * on to X-NUCLEO-CCA02M1 board:
- * - close the solder bridges SB12, SB16 and open the solder bridges SB7, SB15 and SB17
- * - if additional microphones are plugged, close the solder bridge SB17.<br>
- *
- * <b>Example Application</b>
- *
- * The Example application initizializes all the Components and Library creating 3 Custom Bluetooth services:
- * - The first service exposes all the HW and SW characteristics:
- *  - HW characteristics:
- *      - related to MEMS sensor devices: Temperature, Humidity, Pressure, Magnetometer, Gyroscope and Accelleromenter 
- *        and Microphones Signal Noise dB level.
- *      - battery alarm output (for only SensorTile) 
- *  - SW characteristics: the quaternions generated by the osXMotionFX library in short precision, the activity
- *    recognized using the osxMotionAR algorithm, the carry position recognized using the osxMotionCP algorithm,
- *    the Gesture recognized using the osxMotionGR, the audio source localization using the osxAcousticSL algorithm
- *    and Voice over Bluetooth Low Enegy using the osxBlueVoice algorithm
- * - The second Service exposes the console services where we have stdin/stdout and stderr capabilities
- * - The last Service is used for configuration purpose
- *
- * For NUCLEO boards the example application allows the user to control the initialization phase via UART.
- * Launch a terminal application and set the UART port to 460800 bps, 8 bit, No Parity, 1 stop bit.
- * For having the same UART functionality on SensorTile board, is necessary to recompile the code uncomment the line 87
- *	//#define OSX_BMS_ENABLE_PRINTF
- * on file:
- *	Projects\Multi\Applications\BlueMicrosystem2\Inc\osx_bms_config.h file
- * This enables the UART that starts with a delay of 10 Seconds for allowing the time to open the UART for looking
- * the initialization phase.
- *
- * This example must be used with the related BlueMS Android/iOS application available on Play/itune store,
- * in order to read the sent information by Bluetooth Low Energy protocol
- *
- *                              -----------------------
- *                              | VERY IMPORTANT (1): |
- *                              -----------------------
- * 1) This example support the Firmware-Over-The-Air (FOTA) update and the osxMotion License activation OTA 
- * using the BlueMS Android/iOS application (Version 3.0.0 and above)
- * The FOTA does not work when using X-NUCLEO-IDB04A1
- *
- * 2) This example must run starting at address 0x08004000 in memory and works ONLY if the BootLoader 
- * is saved at the beginning of the FLASH (address 0x08000000)
- *
- * 3) If the user presses the button B1 on Nucleo board, 3 times on less that 2 seconds,
- * he forces a new Calibration for osxMotionFX Library
- * The calibration value could be stored on FLASH memory or in RAM for avoiding to do the calibration at each board reset
- *
- * 4) For each IDE (IAR/碌Vision/System Workbench), and for each platform (NUCLEO-F401RE/NUCLEO-L476RG/SensorTile),
- * there are some scripts CleanBlueMS1.bat/CleanBlueMS1.sh that makes the following operations:
- * - Full Flash Erase
- * - Load the BootLoader on the rigth flash region
- * - Load the Program (after the compilation) on the rigth flash region (This could be used for a FOTA)
- * - Dump back one single binary that contain BootLoader+Program that could be
- *   flashed at the flash beginning (address 0x08000000) (This COULD BE NOT used for FOTA)
- * - Reset the board
- * .
- *
- *                              -----------------------
- *                              | VERY IMPORTANT (2): |
- *                              -----------------------
- * It's necessary to choose the right Target configuration during the compilation.
- * If the code is compiled for IKS01A1 could not run if it's attached the X-NUCLEO-IKS01A2 and vice versa
- *
- *                               --------------------
- *                               | KNOWN LIMITATION |
- *                               --------------------
- * - Even if BLUEMICROSYSTEM2 send 100quaternions/second with Bluetooth, the mobile devices could render only 60frames/second
- * - FOTA does not work when using X-NUCLEO-IDB04A1
- * - For NUCLEO-F401RE board, there is an hardware conflict between the boards X-NUCLEO-IKS01A2 and the X-NUCLEO-CCA02M1.
- *   The hardware features of the LSM6DSL are disabled.
- * - Before Flash a different package that uses the previous Licenses Manager version, it's necessary to clean up
- *   the Licenses saved on FLASH because they could be not compatible
- */
+ **/
 
 /* Includes ------------------------------------------------------------------*/
 #include <stdio.h>
@@ -175,12 +18,86 @@
 #include "bluenrg_utils.h"
 #include "HWAdvanceFeatures.h"
 
+
+
+//add datalog and USB CDC
+
+//#include"datalog_application.h"
+//#include "usbd_cdc_interface.h"
+
+//end add datalog and USB CDC 
+/* add FatFs includes component */
+//#include "ff_gen_drv.h"
+//#include "sd_diskio.h"
+/*end  FatFs includes component *
+
+
+
 /* Private typedef -----------------------------------------------------------*/
 
 /* Private define ------------------------------------------------------------*/
 
 #define BLUEMSYS_N_BUTTON_PRESS 3
 #define BLUEMSYS_CHECK_CALIBRATION ((uint32_t)0x12345678)
+
+/*add  Data acquisition period [ms] */
+//#define DATA_PERIOD_MS (100)
+/*end  Data acquisition period [ms] */
+
+/*add SendOverUSB */
+
+/* SendOverUSB = 0  --> Save sensors data on SDCard (enable with double click) */
+/* SendOverUSB = 1  --> Send sensors data via USB */
+
+//uint8_t SendOverUSB = 1;
+
+/*USB发送的数据 */
+/*
+{
+ACC_FREE_FALL;
+ACC_DOUBLE_TAP;
+ACC_SINGLE_TAP;
+ACC_WAKE_UP;
+ACC_TILT;
+Orientation;
+StepCount;
+}
+*/
+uint32_t Move_Data[7];
+
+
+//USBD_HandleTypeDef  USBD_Device;
+
+/*end SendOverUSB */
+
+
+//void DataLog_init()
+//{
+//	HAL_PWREx_EnableVddUSB();
+//	 
+//	 if(SendOverUSB) /* Configure the USB */
+//	 {
+//	   /*** USB CDC Configuration ***/
+//	   /* Init Device Library */
+//	   USBD_Init(&USBD_Device, &VCP_Desc, 0);
+//	   /* Add Supported Class */
+//	   USBD_RegisterClass(&USBD_Device, USBD_CDC_CLASS);
+//	   /* Add Interface callbacks for AUDIO and CDC Class */
+//	   USBD_CDC_RegisterInterface(&USBD_Device, &USBD_CDC_fops);
+//	   /* Start Device Process */
+//	   USBD_Start(&USBD_Device);
+//	 }
+//	 else /* Configure the SDCard */
+//	 {
+//	   DATALOG_SD_Init();
+//	 }
+//	 HAL_Delay(200);
+//
+//}
+
+
+
+
 
 /* Imported Variables -------------------------------------------------------------*/
 extern uint8_t set_connectable;
@@ -198,12 +115,11 @@ extern osx_MCP_output_t CarryPositionCode;
 extern osx_MGR_output_t GestureRecognitionCode;
 /* Code for MotionGR integration - End Section */
 
-#ifdef STM32_SENSORTILE
-  #ifdef OSX_BMS_ENABLE_PRINTF
+   // OSX_BMS_ENABLE_PRINTF
     extern TIM_HandleTypeDef  TimHandle;
-    extern void CDC_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim);
-  #endif /* OSX_BMS_ENABLE_PRINTF */
-#endif /* STM32_SENSORTILE */
+    //extern void CDC_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim);
+  /* OSX_BMS_ENABLE_PRINTF */
+
 
 /* Code for MotionFX integration - Start Section */
 extern uint32_t osx_mfx_license[3][4];
@@ -294,10 +210,6 @@ extern volatile float RMS_Ch[];
 extern float DBNOISE_Value_Old_Ch[];
 extern uint16_t PCM_Buffer[];
 
-#ifdef USE_STM32F4XX_NUCLEO
-extern uint16_t PDM_Buffer[];
-#endif /* USE_STM32F4XX_NUCLEO */
-
 /* Private variables ---------------------------------------------------------*/
 static volatile int ButtonPressed        =0;
 static volatile int MEMSInterrupt        =0;
@@ -387,12 +299,8 @@ int main(void)
   /* Configure the System clock */
   SystemClock_Config();
 
-#ifdef STM32_NUCLEO
-  InitTargetPlatform(TARGET_NUCLEO);
-#elif STM32_SENSORTILE
   InitTargetPlatform(TARGET_SENSORTILE);
-#endif /* STM32_NUCLEO */
-  
+
   /* Init the Meta Data Manager */
   InitMetaDataManager((void *)known_OsxLic,MDM_DATA_TYPE_LIC,NULL);
   /* Enable all the osx Motion License found on Meta Data Manager */
@@ -430,13 +338,12 @@ int main(void)
             MotionGR_License_init(PayLoad);
           break;
           /* Code for MotionGR integration - End Section */
-          
-#ifdef OSX_BMS_ACOUSTIC_SOURCE_LOCALIZATION
+
           case OSX_ACOUSTIC_SL:
             MCR_OSX_COPY_LICENSE_FROM_MDM(osx_asl_license,PayLoad->osxLicense);
             AcousticSL_License_init(PayLoad);
           break;
-#endif /* OSX_BMS_ACOUSTIC_SOURCE_LOCALIZATION */
+
           
           /* Code for BlueVoice integration - Start Section */
           case OSX_AUDIO_BV:
@@ -478,11 +385,11 @@ int main(void)
           break;
           /* Code for MotionGR integration - End Section */
           
-#ifdef OSX_BMS_ACOUSTIC_SOURCE_LOCALIZATION
+
           case OSX_ACOUSTIC_SL:
             AcousticSL_License_init(PayLoad);
           break;
-#endif /* OSX_BMS_ACOUSTIC_SOURCE_LOCALIZATION */
+
           
           /* Code for BlueVoice integration - Start Section */
           case OSX_AUDIO_BV:
@@ -618,7 +525,7 @@ int main(void)
       }
       /* Code for MotionGR integration - End Section */
       
-#ifdef OSX_BMS_ACOUSTIC_SOURCE_LOCALIZATION
+
       /* Initialize AcousticSL Library */
       PayLoad = (MDM_PayLoadLic_t *) MDM_LicTable[OSX_ACOUSTIC_SL].Address;
       if(PayLoad) {
@@ -626,7 +533,6 @@ int main(void)
           AcousticSL_Manager_init();
         }
       }
-#endif /* OSX_BMS_ACOUSTIC_SOURCE_LOCALIZATION */
 
       /* Code for BlueVoice integration - Start Section */
       /* Initialize BlueVoice Library */
@@ -649,10 +555,6 @@ int main(void)
       setConnectable();
       set_connectable = FALSE;
       
-#ifdef USE_STM32F4XX_NUCLEO
-        //BSP_AUDIO_IN_Record(PDM_Buffer, 0);
-#endif /* USE_STM32F4XX_NUCLEO */
-
     }
     
     /* Handle Interrupt from MEMS */
@@ -733,14 +635,13 @@ int main(void)
     }     
     /* Code for BlueVoice integration - End Section */
     
-#ifdef OSX_BMS_ACOUSTIC_SOURCE_LOCALIZATION
+
     /* Audio Source Localization Data */
     if (SendAudioSourceLocalization)
     {
       SendAudioSourceLocalization = 0;
       SendAudioSourceLocalizationData();
     }
-#endif /* OSX_BMS_ACOUSTIC_SOURCE_LOCALIZATION */ 
 
     /* Wait for Event */
     __WFI();
@@ -869,11 +770,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     if(W2ST_CHECK_CONNECTION(W2ST_CONNECT_AUDIO_LEVEL))
       SendAudioLevel=1;
     
-#ifdef OSX_BMS_ACOUSTIC_SOURCE_LOCALIZATION    
     /* Audio Source Localization Data */
     if(W2ST_CHECK_CONNECTION(W2ST_CONNECT_SL))
       SendAudioSourceLocalization= 1;
-#endif /* OSX_BMS_ACOUSTIC_SOURCE_LOCALIZATION */
+
   }
 }
 
@@ -971,6 +871,7 @@ static void MEMSCallback(void)
     BSP_ACCELERO_Get_Free_Fall_Detection_Status_Ext(TargetBoardFeatures.HandleAccSensor,&stat);
     if(stat) {
       AccEvent_Notify(ACC_FREE_FALL);
+	 // Move_Data[0]++;
     }
   }
 
@@ -979,6 +880,7 @@ static void MEMSCallback(void)
     BSP_ACCELERO_Get_Double_Tap_Detection_Status_Ext(TargetBoardFeatures.HandleAccSensor,&stat);
     if(stat) {
       AccEvent_Notify(ACC_DOUBLE_TAP);
+	  //Move_Data[1]++;
     }
   }
 
@@ -987,6 +889,7 @@ static void MEMSCallback(void)
     BSP_ACCELERO_Get_Single_Tap_Detection_Status_Ext(TargetBoardFeatures.HandleAccSensor,&stat);
     if(stat) {
       AccEvent_Notify(ACC_SINGLE_TAP);
+	  //Move_Data[2]++;
     }
   }
 
@@ -995,6 +898,7 @@ static void MEMSCallback(void)
     BSP_ACCELERO_Get_Wake_Up_Detection_Status_Ext(TargetBoardFeatures.HandleAccSensor,&stat);
     if(stat) {
       AccEvent_Notify(ACC_WAKE_UP);
+	  //Move_Data[3]++;
     }
   }
 
@@ -1003,6 +907,7 @@ static void MEMSCallback(void)
     BSP_ACCELERO_Get_Tilt_Detection_Status_Ext(TargetBoardFeatures.HandleAccSensor,&stat);
     if(stat) {
       AccEvent_Notify(ACC_TILT);
+	  //Move_Data[4]++;
     }
   }
 
@@ -1012,6 +917,7 @@ static void MEMSCallback(void)
     if(stat) {
       AccEventType Orientation = GetHWOrientation6D();
       AccEvent_Notify(Orientation);
+	  //Move_Data[5]++;
     }
   }
 
@@ -1021,6 +927,7 @@ static void MEMSCallback(void)
     if(stat) {
       uint16_t StepCount = GetStepHWPedometer();
       AccEvent_Notify(StepCount);
+	  //Move_Data[6]++;
     }
   }
 }
@@ -1504,7 +1411,12 @@ static void SendEnvironmentalData(void)
 #endif /* OSX_BMS_DEBUG_NOTIFY_TRAMISSION */
       }
     }
-    Environmental_Update(PressToSend,HumToSend,Temp2ToSend,Temp1ToSend);
+
+
+	Environmental_Update(PressToSend,HumToSend,Temp2ToSend,Temp1ToSend);
+
+
+	
   }
 
 #ifdef OSX_BMS_DEBUG_NOTIFY_TRAMISSION

@@ -16,7 +16,7 @@
           
           
           
-        <Column0>368</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+        <Column0>212</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
       </Workspace>
       <Build>
         
@@ -28,7 +28,7 @@
     <Windows>
       
       
-    <Wnd0>
+    <Wnd2>
         <Tabs>
           <Tab>
             <Identity>TabID-9644-7375</Identity>
@@ -36,11 +36,11 @@
             <Factory>Workspace</Factory>
             <Session>
               
-            <NodeDict><ExpandedNode>Project</ExpandedNode><ExpandedNode>Project/Drivers</ExpandedNode><ExpandedNode>Project/Drivers/BSP</ExpandedNode><ExpandedNode>Project/Drivers/BSP/Components</ExpandedNode><ExpandedNode>Project/Drivers/BSP/SensorTile</ExpandedNode><ExpandedNode>Project/Drivers/CMSIS</ExpandedNode><ExpandedNode>Project/Drivers/STM32L4xx-Nucleo</ExpandedNode><ExpandedNode>Project/Middlewares</ExpandedNode><ExpandedNode>Project/Middlewares/MetaDataManager</ExpandedNode><ExpandedNode>Project/Middlewares/OSX_BlueVoice</ExpandedNode><ExpandedNode>Project/Middlewares/OSX_MotionAR</ExpandedNode><ExpandedNode>Project/Middlewares/OSX_MotionCP</ExpandedNode><ExpandedNode>Project/Middlewares/OSX_MotionFX</ExpandedNode><ExpandedNode>Project/Middlewares/OSX_MotionGR</ExpandedNode><ExpandedNode>Project/Middlewares/STM32_BlueNRG</ExpandedNode><ExpandedNode>Project/Middlewares/STM32_BlueNRG/HCI</ExpandedNode><ExpandedNode>Project/Middlewares/STM32_BlueNRG/HCI/Controller</ExpandedNode><ExpandedNode>Project/Middlewares/STM32_BlueNRG/Interface</ExpandedNode><ExpandedNode>Project/Middlewares/STM32_BlueNRG/Utils</ExpandedNode><ExpandedNode>Project/Middlewares/STM32_USBD_Library</ExpandedNode><ExpandedNode>Project/Middlewares/STM32_USBD_Library/Class</ExpandedNode><ExpandedNode>Project/Middlewares/STM32_USBD_Library/Class/CDC</ExpandedNode><ExpandedNode>Project/Middlewares/STM32_USBD_Library/Core</ExpandedNode><ExpandedNode>Project/Output</ExpandedNode></NodeDict></Session>
+            <NodeDict><ExpandedNode>Project</ExpandedNode><ExpandedNode>Project/BlueMS2_SensorTile</ExpandedNode><ExpandedNode>Project/BlueMS2_SensorTile/EWARM</ExpandedNode><ExpandedNode>Project/BlueMS2_SensorTile/User</ExpandedNode><ExpandedNode>Project/Middlewares</ExpandedNode><ExpandedNode>Project/Middlewares/FatFs</ExpandedNode><ExpandedNode>Project/Middlewares/FatFs/Core</ExpandedNode><ExpandedNode>Project/Middlewares/FatFs/Drivers</ExpandedNode><ExpandedNode>Project/Middlewares/FatFs/Options</ExpandedNode></NodeDict></Session>
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd0><Wnd1>
+      <SelectedTab>0</SelectedTab></Wnd2><Wnd3>
         <Tabs>
           <Tab>
             <Identity>TabID-20392-7378</Identity>
@@ -56,20 +56,20 @@
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd1></Windows>
+      <SelectedTab>1</SelectedTab></Wnd3></Windows>
     <Editor>
       
       
       
       
-    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\Src\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>33</YPos2><SelStart2>2321</SelStart2><SelEnd2>2321</SelEnd2></Tab><ActiveTab>0</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\Src\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>478</YPos2><SelStart2>0</SelStart2><SelEnd2>0</SelEnd2></Tab><ActiveTab>0</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
       
       
       
       
       
-    <Top><Row0><Sizes><Toolbar-0531A230><key>iaridepm.enu1</key></Toolbar-0531A230></Sizes></Row0></Top><Left><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>574</Bottom><Right>459</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>138889</sizeHorzCX><sizeHorzCY>244798</sizeHorzCY><sizeVertCX>320139</sizeVertCX><sizeVertCY>705018</sizeVertCY></Rect></Wnd0></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>198</Bottom><Right>1442</Right><x>-2</x><y>-2</y><xscreen>1444</xscreen><yscreen>200</yscreen><sizeHorzCX>1002778</sizeHorzCX><sizeHorzCY>244798</sizeHorzCY><sizeVertCX>138889</sizeVertCX><sizeVertCY>244798</sizeVertCY></Rect></Wnd1></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-055A0B68><key>iaridepm.enu1</key></Toolbar-055A0B68></Sizes></Row0><Row1><Sizes/></Row1></Top><Left><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>456</Bottom><Right>303</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>138889</sizeHorzCX><sizeHorzCY>244798</sizeHorzCY><sizeVertCX>211806</sizeVertCX><sizeVertCY>560588</sizeVertCY></Rect></Wnd2></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>316</Bottom><Right>1442</Right><x>-2</x><y>-2</y><xscreen>1444</xscreen><yscreen>318</yscreen><sizeHorzCX>1002778</sizeHorzCX><sizeHorzCY>389229</sizeHorzCY><sizeVertCX>138889</sizeVertCX><sizeVertCY>244798</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Workspace>
 

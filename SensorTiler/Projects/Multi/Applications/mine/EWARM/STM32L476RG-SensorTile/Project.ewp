@@ -335,6 +335,9 @@
           <state>$PROJ_DIR$\..\..\..\..\..\..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\Drivers\BSP\Components\stc3115</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\Middlewares\ST\STM32_MetaDataManager</state>
+          <state>$PROJ_DIR$\..\..\..\..\..\..\Middlewares\Third_Party\FatFs\src</state>
+          <state>$PROJ_DIR$\..\..\..\..\..\..\Middlewares\Third_Party\FatFs\src\drivers</state>
+          <state>$PROJ_DIR$\..\..\..\..\..\..\Middlewares\Third_Party\FatFs\src\option</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -1222,6 +1225,18 @@
   </group>
   <group>
     <name>Middlewares</name>
+    <group>
+      <name>FatFs</name>
+      <group>
+        <name>Core</name>
+      </group>
+      <group>
+        <name>Drivers</name>
+      </group>
+      <group>
+        <name>Options</name>
+      </group>
+    </group>
     <group>
       <name>MetaDataManager</name>
       <file>
